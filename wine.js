@@ -140,7 +140,7 @@ formLogin.onclick = function (e) {
 }
 var isshowModal = false;
 userBtnMoblie.onclick = function () {
-    document.querySelector('.navbar-main').style.display = 'none';
+    document.querySelector('.navbar-main-mobile').style.display = 'none';
     if(isshowModal){
         modal.style.display = 'none';
         isshowModal=false;
