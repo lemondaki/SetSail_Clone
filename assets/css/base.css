@@ -1,0 +1,294 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --primary: #3FD4E0;
+    --border-color: #DBDBDB;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    /* 100% ~ 16px */
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.gridd {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+
+}
+
+/* .grid {
+    width: 1200px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    margin: 0 auto;
+} */
+.contain__subnavmain-list {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 15px;
+    margin: 0 auto;
+}
+
+.grid__full-width {
+    width: 100%;
+}
+
+.grid___row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body {
+    height: 2000px;
+}
+
+.modal__inner {
+    margin-top: 100px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    z-index: 3;
+    display: none;
+}
+
+.header__navbar-user:focus~.modal {
+    display: block;
+}
+
+.modal__overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255, 0.8);
+}
+
+.modal__body {
+    width: 280px;
+    height: 540px;
+    margin: auto;
+    z-index: 1;
+    background-color: #3FD0D4;
+    position: relative;
+    animation: FadeIn linear 0.3s;
+}
+
+.signup__form,
+.login__form {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.signup__form {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.register__block,
+.login__block {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn__facebook:hover,
+.btn__google:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.block--active {
+    background-color: #3ABDC1;
+}
+
+.login__heading {
+    font-size: 1.4rem;
+    color: var(--white-color);
+}
+
+.switch-btn {
+    font-size: 1.4rem;
+    color: var(--white-color);
+}
+
+.form__content {
+    padding: 30px 30px;
+}
+
+.form__intro-heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white-color);
+    margin: 0;
+    padding: 8px 0;
+    ;
+}
+
+.form__intro-text {
+    font-size: 1.4rem;
+    color: var(--white-color);
+    margin: 0;
+    padding-bottom: 16px;
+    line-height: 2.8rem;
+}
+
+.input__login {
+    width: 100%;
+    position: relative;
+    margin-top: 4px;
+}
+
+input::placeholder {
+    font-size: 1.3rem;
+}
+
+.input_box {
+    width: 100%;
+    height: 44px;
+    background-color: #6FDCDF;
+    color: var(--white-color);
+    outline: white;
+    border: none;
+    border-radius: 2px;
+}
+
+.input__login-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+input {
+    padding-left: 50px;
+    position: relative;
+    top: 2px
+}
+
+::-webkit-input-placeholder {
+    /* Microsoft Edge */
+    color: var(--white-color);
+    font-size: 1.4rem;
+}
+
+.login__remember {
+    margin: 20px 0 15px 0;
+}
+
+.login__remember:hover {
+    cursor: pointer;
+}
+
+.remember__text {
+    font-size: 1.4rem;
+    color: var(--white-color);
+    padding-left: 10px;
+}
+
+input.remember__again {
+    width: 13x;
+    height: 13px;
+}
+
+.lost__password {
+    color: #288C8F;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.lost__password:hover {
+    color: var(--black-color);
+    cursor: pointer;
+}
+
+.input_box-signin {
+    background-color: var(--white-color);
+    margin-top: 15px;
+}
+
+.input_box-signin-text {
+    color: var(--black-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.input__login:hover .input_box-signin-text,
+.input__login:hover .input_box-signin {
+    background-color: #23A9AF;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.signin__with {
+    margin-top: 30px;
+}
+
+.signin__with-heading {
+    color: var(--white-color);
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.btn__facebook {
+    background-color: #3B5998;
+}
+
+.btn__google {
+    background-color: #DD4B39;
+}
+
+.navbar-input:checked~.modal {
+    display: block;
+}
+
+@keyframes FadeIn {
+    from {
+        top: -10%;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* for tablet and mobile */
+@media only screen and (max-width) {
+    .navbar-input:checked~.modal {
+        display: block;
+    }
+}
