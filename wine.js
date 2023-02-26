@@ -1,189 +1,162 @@
-var barprogress = document.querySelectorAll('.bar__chart-content1')
-var chartPercent = document.querySelectorAll('.tour__chart-percent')
-var wineDataNumber = document.querySelectorAll('.wine-traditional__quantity')
-var upToTop = document.querySelector('.upToTop')
-var slider = document.querySelector('.slider')
-var nextBtn = document.querySelector('.slide-page__icon-block-right')
-var prevBtn = document.querySelector('.slide-page__icon-block-left')
-var userBtn = document.querySelector('.header__navbar-user')
-var userBtnMoblie = document.querySelector('.header__navbar-mobile-user')
-var modal = document.querySelector('.modal')
-var modalOverlay = document.querySelector('.modal__overlay')
-var formLogin = document.querySelector('.modal__body')
-var barMoblieBtn = document.querySelector('.bar-mobile-hamberger')
-var counters = Array(barprogress.length)
-var intervals = Array(counters.length)
-const isTextPercent = false;
-document.onscroll = function () {
-    myfunction();
-    myShowDataWine()
-}
-//! Function xử lý show barprogress tours popular
-function myfunction() {
-    setTimeout(function () {
-        if (document.body.scrollTop > 720 || document.documentElement.scrollTop > 720) {
-            for (var i = 0; i < barprogress.length; i++) {
-                if (barprogress[i].style.width == 0 && barprogress[i].style.opacity == 0) {
-                    barprogress[i].style.width = barprogress[i].dataset.percent + '%';
-                    barprogress[i].style.opacity = 1;
-                }
-            }
-            Array.from(barprogress).map((number, index) => {
-                counters[index] = 0;
-                intervals[index] = setInterval(function () {
-                    if (chartPercent[index].textContent != `${number.dataset.percent}` + '%') {
-                        if (counters[index] <= number.dataset.percent) {
-                            chartPercent[index].innerHTML = counters[index] + '%';
-                            chartPercent[index].style.opacity = 1;
-                            counters[index]++;
-                        }
-                        else {
-                            clearInterval(intervals[index]);
-                        }
-                    }
-                }, 30)
-            })
-        }
-    }, 800)
-}
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+const barprogress = $$('.bar__chart-content1');
+const chartPercent = $$('.tour__chart-percent');
+const wineDataNumber = $$('.wine-traditional__quantity');
+const upToTop = $('.upToTop');
+const slide = $$('.slide-page');
+const nextBtn = $('.slide-page__icon-block-right');
+const prevBtn = $('.slide-page__icon-block-left');
+const userBtn = $('.header__navbar-user');
+const userBtnMoblie = $('.header__navbar-mobile-user');
+const modal = $('.modal');
+const modalOverlay = $('.modal__overlay');
+const formLogin = $('.modal__body');
+const barMoblieBtn = $('.bar-mobile-hamberger');
+const loginBlock = $$('.login__block');
+const form = $$('.form__common');
+const navbarMobile = $('.navbar-main-mobile');
+const navbarMainList = $('.navbar-main__list');
 
-//! Function xử lý show data-number of wine tours:
-var countNumber = Array(wineDataNumber.length)
-var intervalsNumber = Array(countNumber.length)
-function myShowDataWine() {
-    if (window.scrollY > 2672 || document.documentElement.scrollTop > 2672) {
-        console.log(window.scrollY)
-        Array.from(wineDataNumber).map((wineData, index) => {
-            countNumber[index] = 0;
-            intervalsNumber[index] = setInterval(function () {
-                if (wineData.textContent != (wineData.dataset.number)) {
-                    if (countNumber[index] <= wineData.dataset.number) {
-                        wineData.innerHTML = countNumber[index];
-                        wineData.style.opacity = 1;
-                        countNumber[index] += 2;
-                    }
-                    else {
-                        clearInterval(intervalsNumber[index]);
-                    }
-                }
-            }, 30)
-        })
-    }
-}
-
-//! Function xử lý scroll to Top:
-$(document).scroll(function () {
-    if ($(this).scrollTop() >= 1700) {
-        $(".upToTop").css("display", "flex");
-    } else {
-        $(".upToTop").css("display", "none");
-    }
-});
-upToTop.onclick = function ScrollToTop() {
-    $("html, body").animate({ scrollTop: "0" });
-}
-//SlideShow
-let currentPositon = 0;
-var index = 0;
-nextSlide = function () {
-    var slideBlock = document.querySelectorAll('.slider__block')
-    var sliderItemWidth = slideBlock[0].offsetWidth;
-    if (index >= slideBlock.length - 1) {
-        index = slideBlock.length - 1;
-        return
-    }
-    currentPositon = currentPositon - sliderItemWidth;
-    slider.style = `transform: translateX(${currentPositon}px)`;
-    document.querySelector('.slider').style.transition = "all 0.7s ease-in-out";
-    index++;
-    $(window).resize(function () {
-        currentPositon = 0;
-        slider.style = `transform: translateX(${currentPositon}px)`;
-        document.querySelector('.slider').style.transition = "all 0.7s ease-in-out";
-        index = 0;
+/* Function Handle Slider */
+const maxSlide = slide.length;
+let curSlide = 0;
+const goToSlide = function (curSlide) {
+    slide.forEach((slide, i) => {
+        slide.style.transform = `translateX(${100 * (i - curSlide)}%)`;
     });
 }
+nextBtn.addEventListener('click', function () {
+    if (curSlide === maxSlide - 1) curSlide = 0;
+    else curSlide++;
+    goToSlide(curSlide);
+})
+prevBtn.addEventListener('click', function () {
+    if (curSlide === 0) curSlide = maxSlide - 1;
+    else curSlide--;
+    goToSlide(curSlide);
+})
+const init = function () {
+    goToSlide(curSlide)
+}
+init();
 
-function prevSlide() {
-    var slideBlock = document.querySelectorAll('.slider__block')
-    var sliderItemWidth = slideBlock[0].offsetWidth;
-    if (index <= 0) {
-        index = 0;
-        return;
-    }
-    currentPositon = currentPositon + sliderItemWidth;
-    slider.style = `transform: translateX(${currentPositon}px)`;
-    document.querySelector('.slider').style.transition = "all 0.7s ease-in-out";;
-    index--;
-}
-//! Function xử lý show slider:
-nextBtn.onclick = function sliderShow() {
-    handleChangeSlide(1)
-}
-prevBtn.onclick = function () {
-    handleChangeSlide(-1)
-}
-function handleChangeSlide(direction) {
-    if (direction == 1) {
-        nextSlide()
-    }
-    else if (direction == -1) {
-        prevSlide()
-    }
-}
-//! Function show form Login:
-userBtn.onclick = function () {
-    modal.style.display = 'block';
-}
-formLogin.onclick = function (e) {
-    e.stopPropagation()
-}
-var isshowModal = false;
-userBtnMoblie.onclick = function () {
-    document.querySelector('.navbar-main').style.display = 'none';
-    if(isshowModal){
+
+/* Function Handle Open/Close Modal */
+let isModal = false;
+userBtnMoblie.addEventListener('click', function () {
+    if (isModal) {
         modal.style.display = 'none';
-        isshowModal=false;
+        isModal = false;
+    } else {
+        modal.style.display = 'block';
+        isModal = true;
+    }
+})
+modalOverlay.addEventListener('click', function () {
+    modal.style.display = 'none';
+    isModal = false;
+})
+userBtn.addEventListener('click', function () {
+    modal.style.display = 'block';
+})
+loginBlock.forEach((el, i) => el.addEventListener('click', function (e) {
+    $('.block--active').classList.remove('block--active');
+    form.forEach(form => form.classList.add('form--hidden'));
+    if (!e.target) return;
+    const target = e.target.closest('.login__block');
+    target.classList.add('block--active');
+    form[i].classList.remove('form--hidden');
+}))
+let isOpenNav = false;
+barMoblieBtn.addEventListener('click', function () {
+    if (isOpenNav) {
+        navbarMobile.style.display = 'none';
+        isOpenNav = false;
+    } else {
+        navbarMobile.style.display = 'block';
+        isOpenNav = true;
+    }
+})
+let isClick = false;
+navbarMainList.addEventListener('click', function (e) {
+    if (isClick) {
+        if (e.target.classList.contains('box__main-item')) {
+            const target = e.target.parentElement;
+            target.querySelector('.subnav-main').style.opacity = 0;
+            target.querySelector('.subnav-main').style.height = '0';
+            isClick = false;
+        }
     }
     else {
-        modal.style.display = 'block';
-        isshowModal = true;
+        if (e.target.classList.contains('box__main-item')) {
+            const target = e.target.parentElement;
+            target.querySelector('.subnav-main').style.opacity = 1;
+            target.querySelector('.subnav-main').style.height = `${700}px`;
+            isClick = true;
+        }
+    }
+})
+
+/* Function handle print Number */
+const printNumber = function (El,number,index,time,unit='') {
+    for (let i = 0; i <= number; i++) {
+        setTimeout(function () {
+            Array.from(El)[index].innerHTML = `${i}${unit}`;
+        }, i * time);
     }
 }
 
-modal.onclick = function () {
-    modal.style.display = 'none';
-    isshowModal = false;
+
+/* Function Handle Display Percent % With Observer Element target to View */
+let count = 0, cnt=0;
+const callback = function (entries) {
+    const [entry] = entries;
+    if (!entry.isIntersecting || count) return;
+    barprogress.forEach((bar, index) => {
+        const percent = bar.dataset.percent;
+        bar.style.opacity = 1;
+        bar.style.width = `${percent}%`;
+        printNumber(chartPercent, percent, index, 20, '%');
+    })
+    count++;
 }
-//! Function show navbar-main mobile and tablet:
-var isShowMobileBar = false;
-barMoblieBtn.onclick =  function showNavbarMain(){
-    document.querySelector('.overlay-mobile').style.display='block';
-    if(isShowMobileBar){
-        document.querySelector('.navbar-main-mobile').style.display = 'none';
-        isShowMobileBar=false;
-    }
-    else {
-        document.querySelector('.navbar-main-mobile').style.display='block';
-        isShowMobileBar=true;
-       window.onresize = function(){
-           if (document.documentElement.clientWidth > 1024){
-               document.querySelector('.navbar-main-mobile').style.display = 'none';
-               isShowMobileBar = false;
-           }
-       }
-    }
+
+const observer = new IntersectionObserver(callback, {
+    root: null,
+    threshold: 0
+});
+const targetElement = document.querySelector('.rice-field');
+observer.observe(targetElement);
+
+
+/* Function handle show wine number quantity */
+const callbackWine = function (entries) {
+    const [entry] = entries;
+    if (!entry.isIntersecting || cnt) return;
+    wineDataNumber.forEach((wine, index) => {
+        const quantity = wine.dataset.quantity;
+        printNumber(wineDataNumber,quantity, index,5);
+    })
+    cnt++;
 }
-document.querySelector('.overlay-mobile').onclick = function(){
-    document.querySelector('.navbar-main-mobile').style.display = 'none';
-    document.querySelector('.overlay-mobile').style.display = 'none';
-    isShowMobileBar = false;
-}
-//!Function show subnav bar main:
-document.querySelector('.navbar-main__list').onclick = function (e) {
-    var CategoryItemNode = e.target.closest('.navbar-main__catagory')
-    if (e.target.classList.contains('box__main-item')){
-    CategoryItemNode.querySelector('.testt').classList.toggle('newsubnav-main')
-    CategoryItemNode.querySelector('.testt').classList.toggle('subnav-main')
-    }
-}
+
+const observerWine = new IntersectionObserver(callbackWine, {
+    root: null,
+    threshold: 0
+});
+const targetWine = $('.wine-traditional')
+observerWine.observe(targetWine);
+
+
+/* function handle go to top page*/
+window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 2500) upToTop.style.display = 'flex';
+    else upToTop.style.display = 'none';
+})
+upToTop.addEventListener('click', function (e) {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    })
+})

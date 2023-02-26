@@ -22,7 +22,7 @@
     justify-content: space-between;
     height: 46px;
     position: fixed;
-    inset:  0 0 0 0;
+    inset: 0 0 0 0;
     z-index: 2;
 }
 
@@ -172,6 +172,7 @@
     width: 250px;
     height: 80px;
 }
+
 .navbar-main-mobile,
 .navbar-main {
     width: 100%;
@@ -181,7 +182,8 @@
     justify-content: center;
     margin: 0 auto;
 }
-.navbar-main-mobile{
+
+.navbar-main-mobile {
     width: 100%;
     height: 82px;
     display: none;
@@ -198,9 +200,11 @@
     padding: 0;
     margin-right: 40px;
 }
+
 .btn__icon-next {
     display: none;
 }
+
 .navbar-main__catagory {
     margin: 0 36px;
     position: relative;
@@ -243,12 +247,11 @@
     left: -30px;
     background-color: var(--white-color);
     margin-top: 64px;
-    z-index: 6;
+    z-index: 2;
     opacity: 0;
     overflow: hidden;
     height: 0;
-    transition: height ease-out 0.4s, opacity ease-out 0.4s;
-    visibility: none;
+    transition: height ease-out 0.8s, opacity ease-out 0.4s;
 }
 
 .subnav-main__full {
@@ -265,7 +268,7 @@
     opacity: 0;
     overflow: hidden;
     height: 0;
-    transition: height ease-out 0.4s, opacity ease-out 0.4s;
+    transition: height ease-out 0.8s, opacity ease-out 0.4s;
 }
 
 .subnav-main__full::after {
@@ -325,38 +328,28 @@
     padding: 10px 30px;
 }
 
-.slider__wrrapper {
-    width: 100%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-}
-
 .slider {
     width: 100%;
-    display: flex;
-    /* transition: all 1s ease-in-out; */
+    position: relative;
+    height: 600px;
+    display: block;
+    overflow: hidden;
 }
 
-.slider__block {
-    display: flex;
-    flex-grow: 1;
-    width: 100%;
-    flex-shrink: 0;
-    flex-basis: 100%;
-}
 
 .slide-page {
     width: 100%;
     max-width: 100%;
+    max-height: 100%;
     display: flex;
     justify-content: center;
+    position: absolute;
+    transition: all 1.5s ease-in-out;
 }
 
 .slide-page__one {
-    /* background-size: contain; */
     width: 100%;
-    height: 100%;
+    max-height: 100%;
     max-width: 668px;
     display: block;
     margin-right: 10px;
@@ -365,10 +358,10 @@
 .slide-page__one img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .slide-page__second {
-    /* background-size: contain; */
     width: 100%;
     max-width: 350px;
     margin-left: 10px;
@@ -476,8 +469,8 @@
     color: var(--black-color);
     font-size: 1.4rem;
     font-weight: 600;
-    opacity: 0;
-    transition: all 1s ease;
+    opacity: 1;
+    transition: all 2s ease;
 }
 
 .bar__chart-content1 {
@@ -485,7 +478,7 @@
     position: relative;
     background-color: #3FD0D4;
     opacity: 0;
-    transition: all 1s ease;
+    transition: all 2s ease;
 }
 
 .bar__chart-content1::before {
@@ -629,7 +622,7 @@
     color: var(--black-color);
     font-weight: 600;
     text-align: center;
-    opacity: 0;
+    /* opacity: 0; */
     transition: all ease 1s;
 }
 
@@ -652,7 +645,7 @@
 .wine-intro {
     width: 100%;
     max-width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     height: 100%;
     margin-bottom: 80px;
 }
@@ -950,13 +943,15 @@
     align-items: center;
 }
 
-.header__navbar-tablet-item {
-    
-}
+.header__navbar-tablet-item {}
 
 .header__navbar-tablet-item i {
     color: #fff;
     font-size: 1.8rem;
     padding: 0;
     cursor: pointer;
+}
+
+.form--hidden {
+    display: none;
 }

@@ -4,6 +4,29 @@
         display: none;
     }
 
+    #frame {
+        height: 320px;
+    }
+
+    .slider {
+        height: 390px;
+        margin-top: 80px;
+    }
+
+    .slide-page__one {
+        width: 100%;
+        max-height: 100%;
+        max-width: 500px;
+        display: block;
+        margin-right: 10px;
+    }
+
+    .slide-page__second {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 10px;
+    }
+
     .show-on-mobile__tablet {
         display: block;
     }
@@ -149,7 +172,6 @@
         color: var(--black-color);
         padding: 0;
         visibility: none;
-        margin-top: 10px;
     }
 
     .navbar-main__catagory {
@@ -157,7 +179,6 @@
         justify-content: space-between;
         align-items: center;
         width: 80%;
-        padding: 6px 14px;
         background-color: #fff;
     }
 
@@ -166,7 +187,8 @@
         justify-content: space-between;
         align-items: center;
         border-bottom: solid 1px #ccc;
-        padding-bottom: 14px;
+        padding: 14px 0;
+        cursor: default;
     }
 
     .navbar-main__catagory::before {
@@ -201,7 +223,10 @@
     }
 
     .subnav-main {
-        transition: height ease-out 0.6s, opacity ease-out 0.6s;
+        transition: height ease-out 0.3s, opacity ease-out 0.3s;
+        width: 100%;
+        margin-left: 30px;
+        box-shadow: unset;
     }
 
     .newsubnav-main {
@@ -238,8 +263,11 @@
 
     .subnav-main-item {
         border-bottom: 1px solid #ccc;
-        padding: 14px 0;
+        padding: 23px 0;
         margin-left: 40px;
+        height: 30px;
+        display: flex;
+        align-items: center;
     }
 
     .modal__body {
@@ -258,6 +286,24 @@
 @media only screen and (min-width:64em) and (max-width: 77.375em) {
     .slide-page__icon {
         padding: 0 30px;
+    }
+
+    .slider {
+        height: 550px;
+    }
+
+    .slide-page__one {
+        width: 100%;
+        max-height: 100%;
+        max-width: 600px;
+        display: block;
+        margin-right: 10px;
+    }
+
+    .slide-page__second {
+        width: 100%;
+        max-width: 300px;
+        margin-left: 10px;
     }
 
     .tour-place {
@@ -297,6 +343,14 @@
         visibility: hidden;
     }
 
+    .slider {
+        width: 300px;
+        height: 900px;
+        display: flex;
+        justify-content: center;
+        margin: 50px auto 0;
+    }
+
     .show-on-mobile {
         display: block;
     }
@@ -325,12 +379,13 @@
     }
 
     .slide-page__one {
-        background-size: contain;
+        /* background-size: contain; */
+        height: 300px;
         width: 100%;
         height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
+        /* max-width: 100%;
+        max-height: 100%; */
+        /* display: block; */
         margin-right: 0;
     }
 
@@ -384,6 +439,18 @@
         cursor: pointer;
     }
 
+    .wine-intro {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+        height: 100%;
+        margin-bottom: 60px;
+    }
+
+    #frame {
+        height: 220px;
+    }
+
     .wood__block {
         display: flex;
         align-items: center;
@@ -404,7 +471,8 @@
 
     .tour-place__wrapper3,
     .tour-place__wrapper {
-        margin: 0 6px 0 5px;
+        max-width: 300px;
+        margin: 0 auto;
     }
 
     .tour-place__wrapper3:hover .tour-place__img,

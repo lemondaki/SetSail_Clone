@@ -27,7 +27,7 @@ body {
     width: 100%;
     max-width: 1500px;
     margin: 0 auto;
-
+    
 }
 
 /* .grid {
@@ -82,35 +82,35 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.9);
 }
 
 .modal__body {
-    width: 280px;
+    width: 300px;
     height: 540px;
     margin: auto;
-    z-index: 1;
+    z-index: 3;
     background-color: #3FD0D4;
     position: relative;
     animation: FadeIn linear 0.3s;
 }
 
-.signup__form,
-.login__form {
+.form__title,
+.login__via {
     width: 100%;
     height: 48px;
     display: flex;
     justify-content: space-around;
 }
 
-.signup__form {
+.login__via {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
 }
 
-.register__block,
+.btn__login,
 .login__block {
     display: flex;
     flex: 1;
@@ -138,8 +138,8 @@ body {
     font-size: 1.4rem;
     color: var(--white-color);
 }
-
-.form__content {
+.form__signup,
+.form__login {
     padding: 30px 30px;
 }
 
@@ -167,12 +167,12 @@ body {
 }
 
 input::placeholder {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .input_box {
     width: 100%;
-    height: 44px;
+    height: 54px;
     background-color: #6FDCDF;
     color: var(--white-color);
     outline: white;
@@ -252,14 +252,14 @@ input.remember__again {
 }
 
 .signin__with {
-    margin-top: 30px;
+    margin-top: 12px;
 }
 
 .signin__with-heading {
     color: var(--white-color);
     font-weight: 400;
     font-size: 1.3rem;
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 .btn__facebook {
