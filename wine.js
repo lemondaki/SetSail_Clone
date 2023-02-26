@@ -140,6 +140,7 @@ const callbackWine = function (entries) {
     })
     cnt++;
 }
+<<<<<<< HEAD
 
 const observerWine = new IntersectionObserver(callbackWine, {
     root: null,
@@ -160,3 +161,18 @@ upToTop.addEventListener('click', function (e) {
         behavior: 'smooth',
     })
 })
+=======
+document.querySelector('.overlay-mobile').onclick = function(){
+    document.querySelector('.navbar-main-mobile').style.display = 'none';
+    document.querySelector('.overlay-mobile').style.display = 'none';
+    isShowMobileBar = false;
+}
+//!Function show subnav bar main:
+document.querySelector('.navbar-main__list').onclick = function (e) {
+    var CategoryItemNode = e.target.closest('.navbar-main__catagory')
+    if (e.target.classList.contains('box__main-item')){
+    CategoryItemNode.querySelector('.testt').classList.toggle('newsubnav-main')
+    CategoryItemNode.querySelector('.testt').classList.toggle('subnav-main')
+    }
+}
+>>>>>>> 5e8972987976a35e892b5c0f044358be552c033e
